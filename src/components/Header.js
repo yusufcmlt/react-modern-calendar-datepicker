@@ -161,7 +161,32 @@ const Header = ({
         type="button"
         disabled={isPreviousMonthArrowDisabled}
       >
-        <span className="Calendar__monthArrow" />
+        <span className="Calendar__monthArrow">
+          <svg
+            width="26"
+            height="25"
+            viewBox="0 0 26 25"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clipPath="url(#clip0_27_507)">
+              <path
+                d="M17.8055 15.9736L13 11.3936L8.19443 15.9736L6.71821 14.5636L13 8.56363L19.2817 14.5636L17.8055 15.9736Z"
+                fill="#868897"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_27_507">
+                <rect
+                  width="25.1271"
+                  height="24"
+                  fill="white"
+                  transform="translate(25.5635 24.5636) rotate(-180)"
+                />
+              </clipPath>
+            </defs>
+          </svg>
+        </span>
       </button>
       <div
         className="Calendar__monthYearContainer"
@@ -180,7 +205,32 @@ const Header = ({
         type="button"
         disabled={isNextMonthArrowDisabled}
       >
-        <span className="Calendar__monthArrow" />
+        <span className="Calendar__monthArrow">
+          <svg
+            width="26"
+            height="25"
+            viewBox="0 0 26 25"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clipPath="url(#clip0_27_507)">
+              <path
+                d="M17.8055 15.9736L13 11.3936L8.19443 15.9736L6.71821 14.5636L13 8.56363L19.2817 14.5636L17.8055 15.9736Z"
+                fill="#868897"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_27_507">
+                <rect
+                  width="25.1271"
+                  height="24"
+                  fill="white"
+                  transform="translate(25.5635 24.5636) rotate(-180)"
+                />
+              </clipPath>
+            </defs>
+          </svg>
+        </span>
       </button>
     </div>
   );

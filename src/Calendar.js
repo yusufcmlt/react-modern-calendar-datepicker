@@ -28,10 +28,11 @@ const Calendar = ({
   shouldHighlightWeekends,
   renderFooter,
   customDaysClassName,
+  customActiveDate,
 }) => {
   const calendarElement = useRef(null);
   const [mainState, setMainState] = useState({
-    activeDate: null,
+    activeDate: customActiveDate,
     monthChangeDirection: '',
     isMonthSelectorOpen: false,
     isYearSelectorOpen: false,
@@ -107,6 +108,14 @@ const Calendar = ({
       isYearSelectorOpen: false,
     });
   };
+
+  useEffect(() => {
+    setMainState({
+      ...mainState,
+      activeDate: { ...activeDate, ...customActiveDate },
+      isYearSelectorOpen: false,
+    });
+  }, [customActiveDate]);
 
   return (
     <div
@@ -190,6 +199,7 @@ Calendar.defaultProps = {
   value: null,
   renderFooter: () => null,
   customDaysClassName: [],
+  customActiveDate: null,
 };
 
 export { Calendar };
