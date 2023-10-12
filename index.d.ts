@@ -36,12 +36,28 @@ export interface CalendarProps<TValue extends Value> {
   calendarRangeEndClassName?: string;
   renderFooter?: React.FC;
   customDaysClassName?: CustomDayClassNameItem[];
-  customActiveDate?: Day;
+  customNavigationConfig: {
+    onNextMonthClick: () => void;
+    onPrevMonthClick: () => void;
+    isPrevButtonActive: boolean = true;
+    isNextButtonActive: boolean = true;
+    onMonthSelect: (newDate: Day) => void;
+    onYearSelect: (newDate: Day) => void;
+  };
 }
 
-export function Calendar(props: Optional<CalendarProps<DayValue>, 'value'>): React.ReactElement;
-export function Calendar(props: CalendarProps<Day[]>): React.ReactElement;
-export function Calendar(props: CalendarProps<DayRange>): React.ReactElement;
+export type CalendarRef = {
+  handlePrevButtonClick: () => void;
+  handleNextButtonClick: () => void;
+  activeDate: Day;
+  updateActiveDate: (date: Day) => void;
+};
+
+type CalendarPropsUnion =
+  | (Optional<CalendarProps<DayValue>, 'value'> & React.RefAttributes<CalendarRef>)
+  | (CalendarProps<Day[]> & React.RefAttributes<CalendarRef>)
+  | (CalendarProps<DayRange> & React.RefAttributes<CalendarRef>);
+export function Calendar(props: CalendarPropsUnion): JSX.Element;
 
 export type RenderInputProps = {
   ref: React.RefObject<HTMLElement>;
