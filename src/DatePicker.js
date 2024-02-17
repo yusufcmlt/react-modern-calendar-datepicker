@@ -185,6 +185,22 @@ const DatePicker = ({
               shouldHighlightWeekends={shouldHighlightWeekends}
               renderFooter={renderFooter}
               customDaysClassName={customDaysClassName}
+              customNavigationConfig={{
+                isPrevButtonActive: true,
+                isNextButtonActive: true,
+                onNextMonthClick: () => {
+                  //
+                },
+                onPrevMonthClick: () => {
+                  //
+                },
+                onYearSelect: () => {
+                  //
+                },
+                onMonthSelect: () => {
+                  //
+                },
+              }}
             />
           </div>
           <div className="DatePicker__calendarArrow" />
