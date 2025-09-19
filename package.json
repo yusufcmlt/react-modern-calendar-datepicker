@@ -1,6 +1,6 @@
 {
   "name": "react-modern-calendar-datepicker-modif",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A modern, beautiful, customizable date picker for React --modified for personal requirements",
   "main": "lib/index.js",
   "types": "index.d.ts",
@@ -14,7 +14,8 @@
     "build": "cross-env NODE_ENV=production rollup -c",
     "size": "npm run build && size-limit",
     "checkAll": "npm run size && npm run lint && npm run test",
-    "contributors:generate": "npm all-contributors generate"
+    "contributors:generate": "npm all-contributors generate",
+    "pack-locally": "npm run build && npm pack"
   },
   "files": [
     "lib",

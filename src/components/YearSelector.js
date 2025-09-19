@@ -26,6 +26,7 @@ const YearSelector = ({
     allYears.push(i);
   }
   useEffect(() => {
+    if (!wrapperElement.current || !yearListElement.current) return;
     const classToggleMethod = isOpen ? 'add' : 'remove';
     const activeSelectorYear = wrapperElement.current.querySelector(
       '.Calendar__yearSelectorItem.-active',

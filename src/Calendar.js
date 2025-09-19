@@ -56,13 +56,20 @@ const Calendar = forwardRef(
     useEffect(() => {
       const handleKeyUp = ({ key }) => {
         /* istanbul ignore else */
-        if (key === 'Tab') calendarElement.current.classList.remove('-noFocusOutline');
+        if (key === 'Tab' && calendarElement.current) {
+          calendarElement.current.classList.remove('-noFocusOutline');
+        }
       };
-      calendarElement.current.addEventListener('keyup', handleKeyUp, false);
+      const currentElement = calendarElement.current;
+      if (currentElement) {
+        currentElement.addEventListener('keyup', handleKeyUp, false);
+      }
       return () => {
-        calendarElement.current.removeEventListener('keyup', handleKeyUp, false);
+        if (currentElement) {
+          currentElement.removeEventListener('keyup', handleKeyUp, false);
+        }
       };
-    });
+    }, []); // Added dependency array to prevent re-running on every render
 
     const { getToday } = useLocaleUtils(locale);
     const { weekDays: weekDaysList, isRtl } = useLocaleLanguage(locale);

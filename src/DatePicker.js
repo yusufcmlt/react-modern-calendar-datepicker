@@ -44,9 +44,13 @@ const DatePicker = ({
     const handleBlur = () => {
       setCalendarVisiblity(false);
     };
-    window.addEventListener('blur', handleBlur, false);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('blur', handleBlur, false);
+    }
     return () => {
-      window.removeEventListener('blur', handleBlur, false);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('blur', handleBlur, false);
+      }
     };
   }, []);
 
@@ -56,16 +60,22 @@ const DatePicker = ({
     if (valueType === TYPE_MUTLI_DATE) return; // no need to close the calendar
     const shouldCloseCalendar =
       valueType === TYPE_SINGLE_DATE ? !isCalendarOpen : !isCalendarOpen && value.from && value.to;
-    if (shouldCloseCalendar) inputElement.current.blur();
+    if (shouldCloseCalendar && inputElement.current) {
+      inputElement.current.blur();
+    }
   }, [value, isCalendarOpen]);
 
   const handleBlur = e => {
     e.persist();
     if (!isCalendarOpen) return;
-    const isInnerElementFocused = calendarContainerElement.current.contains(e.relatedTarget);
+    const isInnerElementFocused =
+      calendarContainerElement.current &&
+      calendarContainerElement.current.contains(e.relatedTarget);
     if (shouldPreventToggle.current) {
       shouldPreventToggle.current = false;
-      inputElement.current.focus();
+      if (inputElement.current) {
+        inputElement.current.focus();
+      }
     } else if (isInnerElementFocused && e.relatedTarget) {
       e.relatedTarget.focus();
     } else {
