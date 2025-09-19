@@ -8,6 +8,7 @@ const MonthSelector = ({ activeDate, maximumDate, minimumDate, onMonthSelect, is
   const monthSelector = useRef(null);
 
   useEffect(() => {
+    if (!monthSelector.current) return;
     const classToggleMethod = isOpen ? 'add' : 'remove';
     monthSelector.current.classList[classToggleMethod]('-open');
   }, [isOpen]);
